@@ -13,7 +13,7 @@ Read more about [how EdgeAndBingDeflector works](https://www.ctrl.blog/entry/edg
   1. **Download** the latest version of EdgeAndBingDeflector from [GitHub releases](https://github.com/radialapps/EdgeAndBingDeflector/releases)
   2. Run the installer once to configure your system
 
-You may need to **repeat the above steps after installing major feature updates to Windows** through Windows Update. You can subscribe to the [AppCast feed](https://github.com/radialapps/EdgeAndBingDeflector/releases.atom) to be notified of any new releases.
+You may need to **repeat the above steps after installing major feature updates to Windows** through Windows Update. 
 
 If you dismiss the initial dialog to choose to use EdgeAndBingDeflector, or choose the wrong app; you can apply the change  in the Windows Settings app: Apps: Default apps: Choose default apps by protocol: microsoft-edge.
 
