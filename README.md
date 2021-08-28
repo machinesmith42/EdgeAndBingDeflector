@@ -16,7 +16,8 @@ Read more about [how EdgeDeflector works](https://www.ctrl.blog/entry/edgedeflec
   2. Run the installer.
   3. The installer will open a page that guides you through some manual installation steps.
 
-You may need to **repeat the above steps after installing major feature updates to Windows** through Windows Update. You can subscribe to the [AppCast feed](https://github.com/radialapps/EdgeAndBingDeflector/releases.atom) to be notified of any new releases.
+You may need to **repeat the above steps after installing major feature updates to Windows** through Windows Update. 
+You can subscribe to the [AppCast feed](https://github.com/radialapps/EdgeAndBingDeflector/releases.atom) to be notified of any new releases.
 Read more about [how EdgeAndBingDeflector works](https://www.ctrl.blog/entry/edgedeflector-default-browser) and why it was created.
 If you dismiss the initial dialog to choose to use EdgeAndBingDeflector, or choose the wrong app; you can apply the change  in the Windows Settings app: Apps: Default apps: Choose default apps by protocol: microsoft-edge.
 
