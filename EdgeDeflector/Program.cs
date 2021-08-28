@@ -1,14 +1,12 @@
 /*
- * Copyright © 2017 Daniel Aleksandersen
+ * Copyright © 2017–2021 Daniel Aleksandersen
  * SPDX-License-Identifier: MIT
  * License-Filename: LICENSE
  */
 
-using Microsoft.Win32;
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
-using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Web;
@@ -114,33 +112,31 @@ namespace EdgeDeflector
             registeredapps_key.Close();
         }
 
+
         static bool IsUri(string uristring)
         {
             try
             {
                 Uri uri = new Uri(uristring);
-                return uri.IsWellFormedOriginalString();
+                return true;
             }
-            catch (System.UriFormatException)
+            catch (UriFormatException)
             {
-                return false;
             }
             catch (ArgumentNullException)
             {
-                return false;
             }
+            return false;
         }
 
         static bool IsHttpUri(string uri)
         {
-            uri = uri.ToLower();
-            return uri.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || uri.StartsWith("https://", StringComparison.OrdinalIgnoreCase);
+            return uri.StartsWith("HTTPS://", StringComparison.OrdinalIgnoreCase) || uri.StartsWith("HTTP://", StringComparison.OrdinalIgnoreCase);
         }
 
         static bool IsMsEdgeUri(string uri)
         {
-            uri = uri.ToLower();
-            return uri.StartsWith("microsoft-edge:", StringComparison.OrdinalIgnoreCase) && !uri.Contains(" ");
+            return uri.StartsWith("MICROSOFT-EDGE:", StringComparison.OrdinalIgnoreCase) && !uri.Contains(" ");
         }
 
         static bool IsNonAuthoritativeWithUrlQueryParameter(string uri)
@@ -208,9 +204,8 @@ namespace EdgeDeflector
                 Environment.Exit(1);
             }
 
-            ProcessStartInfo launcher = new ProcessStartInfo()
+            ProcessStartInfo launcher = new ProcessStartInfo(uri)
             {
-                FileName = uri,
                 UseShellExecute = true
             };
             Process.Start(launcher);
@@ -223,19 +218,6 @@ namespace EdgeDeflector
             {
                 string uri = RewriteMsEdgeUriSchema(args[0]);
                 OpenUri(uri);
-            }
-
-            // Install when running without argument
-            else if (args.Length == 0 || args.Equals(null))
-            {
-                if (!IsElevated())
-                {
-                    ElevatePermissions();
-                }
-                else
-                {
-                    RegisterProtocolHandler();
-                }
             }
         }
     }
